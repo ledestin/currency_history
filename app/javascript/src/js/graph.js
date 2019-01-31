@@ -8,7 +8,9 @@ class Graph {
 
   init() {
     Highcharts.chart(this.containerId, {
-      title: 'BRL to USD, EUR and AUD'
+      title: {
+        text: 'BRL to USD, EUR and AUD'
+      }
     })
   }
 }
