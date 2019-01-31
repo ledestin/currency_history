@@ -337,6 +337,7 @@ DEPENDENCIES
   slim
   spring
   spring-commands-rspec
+  sprockets (>= 3.0.0)
   suspenders
   timecop
   title
