@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sudo -u ledestin bash -c ". ~/.bashrc; cd /home/ledestin/work/interviews/currency_history; bundle exec rake save_latest_rates"
