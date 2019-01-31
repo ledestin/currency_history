@@ -8,6 +8,8 @@ class Graph {
   }
 
   init() {
+    this.series = { usd: this.usdSeries() }
+
     this.chart = Highcharts.chart(this.containerId, {
       title: {
         text: 'BRL to USD, EUR and AUD'
@@ -21,9 +23,29 @@ class Graph {
           }
       },
       series: [
-        this.usdSeries()
+        this.series.usd
       ]
     })
+  }
+
+  toggleSeries(name) {
+    if (this.isSeriesCharted(name)) {
+      this.removeSeriesFromChart(name)
+    } else {
+      this.addSeriesToChart(name)
+    }
+  }
+
+  removeSeriesFromChart(name) {
+    this.chart.get(`series-${name}`).remove()
+  }
+
+  addSeriesToChart(name) {
+    this.chart.addSeries(this.series[name])
+  }
+
+  isSeriesCharted(name) {
+    return !!this.chart.get(`series-${name}`)
   }
 
   usdSeries() {
@@ -36,13 +58,7 @@ class Graph {
   }
 
   toggleUSD() {
-    const series = this.chart.get('series-usd')
-    if (series) {
-      series.remove()
-      return
-    }
-
-    this.chart.addSeries(this.usdSeries())
+    this.toggleSeries('usd')
   }
 }
 
