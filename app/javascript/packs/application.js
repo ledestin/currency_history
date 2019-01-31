@@ -11,7 +11,7 @@ import $ from 'jquery'
 import { Graph } from '../src/js/graph'
 
 $(function() {
-  let data = [[10, 2], [20, 5], [30, 3], [40, 5]]
-  new Graph('graph_container', data)
+  let data = { usd: [[10, 2], [20, 5], [30, 3], [40, 5]] }
+  window.chart = new Graph('graph_container', data)
   console.log('Hello World from Webpacker')
 })

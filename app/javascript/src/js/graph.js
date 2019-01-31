@@ -8,7 +8,7 @@ class Graph {
   }
 
   init() {
-    Highcharts.chart(this.containerId, {
+    this.chart = Highcharts.chart(this.containerId, {
       title: {
         text: 'BRL to USD, EUR and AUD'
       },
@@ -20,13 +20,29 @@ class Graph {
               text: 'Exchange rate'
           }
       },
-      series: [{
-        type: 'line',
-        name: 'BRL to USD',
-        data: this.data
-      }]
-
+      series: [
+        this.usdSeries()
+      ]
     })
+  }
+
+  usdSeries() {
+    return {
+      type: 'line',
+      id: 'series-usd',
+      name: 'BRL to USD',
+      data: this.data.usd
+    }
+  }
+
+  toggleUSD() {
+    const series = this.chart.get('series-usd')
+    if (series) {
+      series.remove()
+      return
+    }
+
+    this.chart.addSeries(this.usdSeries())
   }
 }
 
