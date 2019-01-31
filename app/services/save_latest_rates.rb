@@ -5,6 +5,6 @@ module SaveLatestRates
   end
 
   def self.rates_created_at(rates)
-    Time.at rates[:timestamp]
+    Time.at rates["timestamp"]
   end
 end
