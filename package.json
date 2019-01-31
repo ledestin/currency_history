@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "highcharts": "^7.0.2",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
