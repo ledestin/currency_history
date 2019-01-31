@@ -23,7 +23,7 @@ gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin, :jruby]
 gem "uglifier"
 gem "bootsnap", require: false
 gem "slim"
-
+gem "faraday"
 
 group :development do
   gem "listen"
