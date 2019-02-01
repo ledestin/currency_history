@@ -10,7 +10,7 @@ describe SaveLatestRates do
     described_class.call
 
     expect(Rate.count).to eq 1
-    expect(rate.api_response).to eq api_result.with_indifferent_access
+    expect(rate.api_response).to eq api_result
     expect(rate.updated_by_api_at).to eq updated_by_api_at
   end
 end
