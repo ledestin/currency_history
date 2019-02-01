@@ -12,11 +12,11 @@ shared_context 'stubbed api' do
         USDAUD: 1.374255,
         USDBRL: 3.68565
       }
-    }
+    }.with_indifferent_access
   end
 
   before do
-    allow_any_instance_of(Faraday::Connection).to receive(:get)
-      .and_return(api_result)
+    stub_request(:get, FetchLatestRates::LATEST_RATES_URL)
+      .to_return(status: 200, headers: {}, body: api_result.to_json)
   end
 end
