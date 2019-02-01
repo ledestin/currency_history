@@ -21,7 +21,7 @@ class Graph {
   init() {
     this.setupSeries()
 
-    this.chart = Highcharts.chart(this.containerId, {
+    this.graph = Highcharts.chart(this.containerId, {
       title: {
         text: 'BRL to USD, EUR and AUD'
       },
@@ -56,15 +56,15 @@ class Graph {
   }
 
   removeSeriesFromChart(name) {
-    this.chart.get(`series-${name}`).remove()
+    this.graph.get(`series-${name}`).remove()
   }
 
   addSeriesToChart(name) {
-    this.chart.addSeries(this.series[name])
+    this.graph.addSeries(this.series[name])
   }
 
   isSeriesCharted(name) {
-    return !!this.chart.get(`series-${name}`)
+    return !!this.graph.get(`series-${name}`)
   }
 
   createSeries(name) {

@@ -20,6 +20,6 @@ $(function() {
     eur: getSeriesData('eur'),
     aud: getSeriesData('aud')
   }
-  window.chart = new Graph('graph_container', data)
+  window.graph = new Graph('graph_container', data)
   console.log('Hello World from Webpacker')
 })
