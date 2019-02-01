@@ -1,5 +1,7 @@
 class Rate < ApplicationRecord
-  before_save :assign_brl_rates
+  before_validation :assign_brl_rates
+
+  validates_presence_of :api_response, :updated_by_api_at, :brl_rates
 
   private
 
