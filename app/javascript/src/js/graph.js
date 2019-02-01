@@ -19,8 +19,7 @@ class Graph {
   }
 
   init() {
-    this.series = { usd: this.usdSeries(), eur: this.eurSeries(),
-      aud: this.audSeries() }
+    this.setupSeries()
 
     this.chart = Highcharts.chart(this.containerId, {
       title: {
@@ -45,6 +44,13 @@ class Graph {
     })
   }
 
+  setupSeries() {
+    this.series = Object.keys(this.data).reduce((memo, currency_name) => {
+      memo[currency_name] = this.createSeries(currency_name)
+      return memo
+    }, {})
+  }
+
   toggleSeries(name) {
     if (this.isSeriesCharted(name)) {
       this.removeSeriesFromChart(name)
@@ -65,30 +71,12 @@ class Graph {
     return !!this.chart.get(`series-${name}`)
   }
 
-  usdSeries() {
+  createSeries(name) {
     return {
       type: 'line',
-      id: 'series-usd',
-      name: 'BRL to USD',
-      data: this.data.usd
-    }
-  }
-
-  eurSeries() {
-    return {
-      type: 'line',
-      id: 'series-eur',
-      name: 'BRL to EUR',
-      data: this.data.eur
-    }
-  }
-
-  audSeries() {
-    return {
-      type: 'line',
-      id: 'series-aud',
-      name: 'BRL to AUD',
-      data: this.data.aud
+      id: `series-${name}`,
+      name: `BRL to ${name.toUpperCase()}`,
+      data: this.data[name]
     }
   }
 
