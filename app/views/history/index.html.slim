@@ -1,9 +1,10 @@
 h1.centered BRL history for the last 24 hours
 
-#graph_container data-usd="#{@usd_to_brl_series}"
+#graph_container[data-usd="#{@usd_to_brl_series}"
+  data-eur="#{@eur_to_brl_series}" data-aud="#{@aud_to_brl_series}"]
 p.centered
   button onclick="chart.toggleUSD()" USD
   |:&nbsp;
-  button EUR
+  button onclick="chart.toggleEUR()" EUR
   |:&nbsp;
-  button AUD
+  button onclick="chart.toggleAUD()" AUD

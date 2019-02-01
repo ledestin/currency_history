@@ -10,9 +10,15 @@
 import $ from 'jquery'
 import { Graph } from '../src/js/graph'
 
+function getSeriesData(name) {
+  return $('#graph_container').data(name)
+}
+
 $(function() {
   let data = {
-    usd: $('#graph_container').data('usd')
+    usd: getSeriesData('usd'),
+    eur: getSeriesData('eur'),
+    aud: getSeriesData('aud')
   }
   window.chart = new Graph('graph_container', data)
   console.log('Hello World from Webpacker')

@@ -19,7 +19,8 @@ class Graph {
   }
 
   init() {
-    this.series = { usd: this.usdSeries() }
+    this.series = { usd: this.usdSeries(), eur: this.eurSeries(),
+      aud: this.audSeries() }
 
     this.chart = Highcharts.chart(this.containerId, {
       title: {
@@ -37,7 +38,9 @@ class Graph {
           }
       },
       series: [
-        this.series.usd
+        this.series.usd,
+        this.series.eur,
+        this.series.aud
       ]
     })
   }
@@ -71,8 +74,34 @@ class Graph {
     }
   }
 
+  eurSeries() {
+    return {
+      type: 'line',
+      id: 'series-eur',
+      name: 'BRL to EUR',
+      data: this.data.eur
+    }
+  }
+
+  audSeries() {
+    return {
+      type: 'line',
+      id: 'series-aud',
+      name: 'BRL to AUD',
+      data: this.data.aud
+    }
+  }
+
   toggleUSD() {
     this.toggleSeries('usd')
+  }
+
+  toggleEUR() {
+    this.toggleSeries('eur')
+  }
+
+  toggleAUD() {
+    this.toggleSeries('aud')
   }
 }
 
