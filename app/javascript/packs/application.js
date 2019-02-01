@@ -12,10 +12,7 @@ import { Graph } from '../src/js/graph'
 
 $(function() {
   let data = {
-    usd: [
-      [1548912072000, 2], [1548915579000, 5], [1548919172000, 3],
-      [1548922785000, 5]
-    ]
+    usd: $('#graph_container').data('usd')
   }
   window.chart = new Graph('graph_container', data)
   console.log('Hello World from Webpacker')
