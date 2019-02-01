@@ -36,7 +36,7 @@ class Graph {
               text: 'Exchange rate'
           }
       },
-      series: this.highchartsSeries()
+      series: Object.values(this.series)
     })
   }
 
@@ -45,12 +45,6 @@ class Graph {
       memo[currency_name] = this.createSeries(currency_name)
       return memo
     }, {})
-  }
-
-  highchartsSeries() {
-    return Object.keys(this.series).map((currency_name) => {
-      return this.series[currency_name]
-    })
   }
 
   toggleSeries(name) {
