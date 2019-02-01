@@ -23,7 +23,7 @@ class Graph {
 
     this.graph = Highcharts.chart(this.containerId, {
       title: {
-        text: 'BRL to USD, EUR and AUD'
+        text: 'BRL to USD or EUR or AUD'
       },
       time: {
         timezone: Momenttz.tz.guess()
@@ -36,7 +36,7 @@ class Graph {
               text: 'Exchange rate'
           }
       },
-      series: Object.values(this.series)
+      series: [this.series.usd]
     })
   }
 
@@ -47,12 +47,12 @@ class Graph {
     }, {})
   }
 
-  toggleSeries(name) {
-    if (this.isSeriesCharted(name)) {
-      this.removeSeriesFromChart(name)
-    } else {
-      this.addSeriesToChart(name)
-    }
+  showSeries(name) {
+    if (this.isSeriesCharted(name)) return
+
+    while(this.graph.series.length > 0)
+      this.graph.series[0].remove(true);
+    this.addSeriesToChart(name)
   }
 
   removeSeriesFromChart(name) {
@@ -76,16 +76,16 @@ class Graph {
     }
   }
 
-  toggleUSD() {
-    this.toggleSeries('usd')
+  showUSD() {
+    this.showSeries('usd')
   }
 
-  toggleEUR() {
-    this.toggleSeries('eur')
+  showEUR() {
+    this.showSeries('eur')
   }
 
-  toggleAUD() {
-    this.toggleSeries('aud')
+  showAUD() {
+    this.showSeries('aud')
   }
 }
 
