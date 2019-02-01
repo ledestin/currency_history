@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_01_080343) do
+ActiveRecord::Schema.define(version: 2019_02_01_115136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_02_01_080343) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.jsonb "brl_rates", null: false
+    t.index ["updated_by_api_at"], name: "index_rates_on_updated_by_api_at"
   end
 
 end
