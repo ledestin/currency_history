@@ -5,6 +5,8 @@
     "@rails/webpacker": "3.5",
     "highcharts": "^7.0.2",
     "jquery": "^3.3.1",
+    "moment-timezone": "^0.5.23",
+    "momentjs": "^2.0.0",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
