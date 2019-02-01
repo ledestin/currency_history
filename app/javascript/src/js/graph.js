@@ -1,4 +1,15 @@
+import $ from 'jquery'
 import Highcharts from 'highcharts'
+import moment from 'moment'
+import momenttz from 'moment-timezone'
+
+function setupHighchartsTzSupport() {
+  window.moment = moment
+}
+
+$(function() {
+  setupHighchartsTzSupport()
+})
 
 class Graph {
   constructor(containerId, data) {
@@ -13,6 +24,9 @@ class Graph {
     this.chart = Highcharts.chart(this.containerId, {
       title: {
         text: 'BRL to USD, EUR and AUD'
+      },
+      time: {
+        timezone: momenttz.tz.guess()
       },
       xAxis: {
           type: 'datetime'
