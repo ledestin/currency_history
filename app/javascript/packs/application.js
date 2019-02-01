@@ -17,9 +17,15 @@ $(function() {
     aud: getSeriesData('aud')
   }
   window.graph = new Graph('graph_container', data)
+  window.makeActive = makeActive;
   console.log('Hello World from Webpacker')
 })
 
 function getSeriesData(name) {
   return $('#graph_container').data(name)
+}
+
+function makeActive(button) {
+  $('button').removeClass('active')
+  $(button).addClass('active')
 }

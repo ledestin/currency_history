@@ -3,8 +3,8 @@ h1.centered BRL history for the last 24 hours
 #graph_container[data-usd="#{@usd_to_brl_series}"
   data-eur="#{@eur_to_brl_series}" data-aud="#{@aud_to_brl_series}"]
 p.centered
-  button onclick="graph.showUSD()" USD
+  button class='active' onclick="graph.showUSD(); makeActive(this)" USD
   |:&nbsp;
-  button onclick="graph.showEUR()" EUR
+  button onclick="graph.showEUR(); makeActive(this)" EUR
   |:&nbsp;
-  button onclick="graph.showAUD()" AUD
+  button onclick="graph.showAUD(); makeActive(this)" AUD
