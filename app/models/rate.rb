@@ -21,7 +21,7 @@ class Rate < ApplicationRecord
   end
 
   def usd_rate_to_brl_rate(rate, usd_to_brl_rate)
-    ((1 / rate) * usd_to_brl_rate).round(6)
+    ((1 / rate.to_d) * usd_to_brl_rate.to_d).round(6).to_f
   end
 
 end
