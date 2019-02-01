@@ -11,7 +11,7 @@ import $ from 'jquery'
 import { Graph } from '../src/js/graph'
 
 $(function() {
-  let data = {
+  const data = {
     usd: getSeriesData('usd'),
     eur: getSeriesData('eur'),
     aud: getSeriesData('aud')
