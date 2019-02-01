@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root to: "history#index"
+  root to: "rates#index"
 end
