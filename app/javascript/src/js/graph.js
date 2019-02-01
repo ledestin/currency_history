@@ -1,10 +1,10 @@
 import $ from 'jquery'
 import Highcharts from 'highcharts'
-import moment from 'moment'
-import momenttz from 'moment-timezone'
+import Moment from 'moment'
+import Momenttz from 'moment-timezone'
 
 function setupHighchartsTzSupport() {
-  window.moment = moment
+  window.moment = Moment
 }
 
 $(function() {
@@ -26,7 +26,7 @@ class Graph {
         text: 'BRL to USD, EUR and AUD'
       },
       time: {
-        timezone: momenttz.tz.guess()
+        timezone: Momenttz.tz.guess()
       },
       xAxis: {
           type: 'datetime'
