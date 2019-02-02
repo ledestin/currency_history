@@ -9,14 +9,18 @@
 
 import $ from 'jquery'
 import { Graph } from '../src/js/graph'
+import { Settings } from '../src/js/settings'
 
 $(function() {
+  Settings.load()
+  makeActive($(`#${Settings.selectedCurrency}`)[0])
+
   const data = {
     usd: getSeriesData('usd'),
     eur: getSeriesData('eur'),
     aud: getSeriesData('aud')
   }
-  window.graph = new Graph('graph_container', data)
+  window.graph = new Graph('graph_container', data, Settings.selectedCurrency)
   window.makeActive = makeActive;
   console.log('Hello World from Webpacker')
 })
@@ -28,4 +32,5 @@ function getSeriesData(name) {
 function makeActive(button) {
   $('button').removeClass('active')
   $(button).addClass('active')
+  Settings.selectCurrency(button.id)
 }

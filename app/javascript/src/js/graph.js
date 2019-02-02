@@ -12,9 +12,10 @@ $(function() {
 })
 
 class Graph {
-  constructor(containerId, data) {
+  constructor(containerId, data, selectedCurrency) {
     this.containerId = containerId
     this.data = data
+    this.selectedCurrency = selectedCurrency
     this.init()
   }
 
@@ -36,7 +37,7 @@ class Graph {
               text: 'Exchange rate'
           }
       },
-      series: [this.series.usd]
+      series: [this.series[this.selectedCurrency]]
     })
   }
 
