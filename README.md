@@ -1,5 +1,17 @@
 # Currency history
 
+## Notes
+
+A scheduled job collects data and puts into db every hour.
+
+* It's probably the last time I went with jQuery hell. I thought for a project
+  this small, I could do without React. Next time I'll use React.
+* If I did it again, I'd try using Money gem, it has exchange rates.
+* No system tests, mostly because I can't test the graph anyway. I could add one
+  to test that the selected button persists on reload.
+* On second thought, using local storage to store selected button isn't good,
+  because a link can't be sent with the selected currency.
+
 ## Getting Started
 
 After you have cloned this repo, run this setup script to set up your machine
