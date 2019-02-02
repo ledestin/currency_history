@@ -13,7 +13,7 @@ import { Settings } from '../src/js/settings'
 
 $(function() {
   Settings.load()
-  makeActive($(`#${Settings.selectedCurrency}`)[0])
+  activateButton($(`#${Settings.selectedCurrency}`)[0])
 
   const data = {
     usd: getSeriesData('usd'),
@@ -21,7 +21,7 @@ $(function() {
     aud: getSeriesData('aud')
   }
   window.graph = new Graph('graph_container', data, Settings.selectedCurrency)
-  window.makeActive = makeActive;
+  window.activateButton = activateButton;
   console.log('Hello World from Webpacker')
 })
 
@@ -29,7 +29,7 @@ function getSeriesData(name) {
   return $('#graph_container').data(name)
 }
 
-function makeActive(button) {
+function activateButton(button) {
   $('button').removeClass('active')
   $(button).addClass('active')
   Settings.selectCurrency(button.id)
