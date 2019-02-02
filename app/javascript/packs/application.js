@@ -13,7 +13,7 @@ import { Settings } from '../src/js/settings'
 
 $(function() {
   Settings.load()
-  activateButton($(`#${Settings.selectedCurrency}`)[0])
+  activateButton(userSelectedOrDefaultButton())
 
   const data = {
     usd: getSeriesData('usd'),
@@ -33,4 +33,8 @@ function activateButton(button) {
   $('button').removeClass('active')
   $(button).addClass('active')
   Settings.selectCurrency(button.id)
+}
+
+function userSelectedOrDefaultButton() {
+  return $(`#${Settings.selectedCurrency}`)[0]
 }
