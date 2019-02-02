@@ -6,9 +6,7 @@ class Settings {
   static load() {
     if (!this.isLocalStorageSupported()) return
 
-    Settings.selectedCurrency = localStorage.getItem('selectedCurrency')
-    if (Settings.selectedCurrency == 'undefined')
-      Settings.selectedCurrency = 'usd'
+    Settings.selectedCurrency = localStorage.getItem('selectedCurrency') || 'usd'
   }
 
   static save() {
