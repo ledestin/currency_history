@@ -9,17 +9,11 @@ class Settings {
     this.selectedCurrency = localStorage.getItem('selectedCurrency') || 'usd'
   }
 
-  static save() {
-    if (!this.isLocalStorageSupported()) return
-
-    localStorage.setItem('selectedCurrency', this.selectedCurrency)
-  }
-
   static selectCurrency(name) {
     if (!this.isLocalStorageSupported()) return
 
     this.selectedCurrency = name
-    this.save()
+    localStorage.setItem('selectedCurrency', this.selectedCurrency)
   }
 }
 
