@@ -12,29 +12,34 @@ import { Graph } from '../src/js/graph'
 import { Settings } from '../src/js/settings'
 
 $(function() {
-  Settings.load()
-  activateButton(userSelectedOrDefaultButton())
-
-  const data = {
-    usd: getSeriesData('usd'),
-    eur: getSeriesData('eur'),
-    aud: getSeriesData('aud')
-  }
-  window.graph = new Graph('graph_container', data, Settings.selectedCurrency)
-  window.activateButton = activateButton;
+  window.app = new App()
   console.log('Hello World from Webpacker')
 })
 
-function getSeriesData(name) {
-  return $('#graph_container').data(name)
-}
+class App {
+  constructor() {
+    Settings.load()
+    this.activateButton(this.userSelectedOrDefaultButton())
 
-function activateButton(button) {
-  $('button').removeClass('active')
-  $(button).addClass('active')
-  Settings.selectCurrency(button.id)
-}
+    const data = {
+      usd: this.getSeriesData('usd'),
+      eur: this.getSeriesData('eur'),
+      aud: this.getSeriesData('aud')
+    }
+    this.graph = new Graph('graph_container', data, Settings.selectedCurrency)
+  }
 
-function userSelectedOrDefaultButton() {
-  return $(`#${Settings.selectedCurrency}`)[0]
+  getSeriesData(name) {
+    return $('#graph_container').data(name)
+  }
+
+  activateButton(button) {
+    $('button').removeClass('active')
+    $(button).addClass('active')
+    Settings.selectCurrency(button.id)
+  }
+
+  userSelectedOrDefaultButton() {
+    return $(`#${Settings.selectedCurrency}`)[0]
+  }
 }
